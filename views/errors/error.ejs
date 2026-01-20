@@ -1,0 +1,14 @@
+
+
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+<div class="error-message">
+  <p><%- message %></p>
+  <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+    💔 Oops! Even our DeLoreans can't travel back in time to prevent this error. 
+    Try heading back to the <a href="/">home page</a> for a fresh start!
+  </p>
+</div>
