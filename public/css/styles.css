@@ -296,6 +296,70 @@ nav a:hover {
 }
 
 /* ===================================
+   INVENTORY DISPLAY
+   =================================== */
+#inv-display {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+#inv-display li {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#inv-display img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: var(--spacing-md);
+}
+
+.namePrice {
+  text-align: center;
+}
+
+.namePrice hr {
+  margin: var(--spacing-sm) 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin: var(--spacing-sm) 0;
+  color: var(--primary-color);
+}
+
+.namePrice h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.namePrice h2 a:hover {
+  color: var(--accent-color);
+}
+
+.namePrice span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+/* ===================================
    FOOTER
    =================================== */
 footer {
