@@ -11,10 +11,10 @@
   /* Color Scheme - Professional Blue/Gray */
   --primary-color: #1a365d;
   --secondary-color: #2c5282;
-  --accent-color: #3182ce;
+  --accent-color: #13314E;
   --text-color: #2d3748;
   --light-bg: #f7fafc;
-  --white: #ffffff;
+  --white: #CFCFCF;
   --border-color: #e2e8f0;
   --hover-color: #001529;
   
@@ -443,5 +443,417 @@ footer {
 
   .upgrade-item img {
     height: 150px;
+  }
+}
+
+/* ===================================
+   LOGIN FORM STYLES
+   =================================== */
+.login-container {
+  max-width: 500px;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg);
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  font-size: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: var(--font-main);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(49, 130, 206, 0.3);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.btn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: var(--font-main);
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.login-footer p {
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.login-footer a {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================
+   REGISTRATION FORM STYLES
+   =================================== */
+/* ===================================
+   FORMS
+   =================================== */
+form {
+  background-color: var(--white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: var(--spacing-lg) auto;
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+legend {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 var(--spacing-sm);
+}
+
+label {
+  display: block;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: var(--spacing-lg);
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #000000;
+}
+
+form p {
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+form p a {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+/* ===================================
+   ERROR MESSAGES
+   =================================== */
+.notice {
+  background-color: #fff1f0;
+  border: 1px solid #ff4d4f;
+  color: #a8071a;
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-lg);
+  list-style: none;
+}
+
+.notice li {
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.notice li:before {
+  content: "✖";
+  position: absolute;
+  left: 0;
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.notice li:last-child {
+  margin-bottom: 0;
+}
+
+/* Success message (for flash messages) */
+.success {
+  background-color: #e6f7ff;
+  border: 1px solid #52c41a;
+  color: #135200;
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-lg);
+}
+
+  /* ===================================
+   FORM VALIDATION STYLES
+   =================================== */
+
+/* Password Info Box */
+.password-info {
+  background-color: #e6f7ff;
+  border-left: 4px solid var(--accent-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  border-radius: 4px;
+}
+
+.password-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Invalid Input Styling */
+input:required:invalid,
+input:focus:invalid {
+  border-color: #ff4d4f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ff4d4f' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-right: 40px;
+}
+
+/* Valid Input Styling */
+input:required:valid {
+  border-color: #52c41a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2352c41a' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-right: 40px;
+}
+
+/* Exception: Don't show validation on password fields with toggle button */
+.password-input-wrapper input {
+  padding-right: 80px !important;
+}
+
+/* Password input validation icons - position differently due to toggle button */
+.password-input-wrapper input:required:invalid,
+.password-input-wrapper input:focus:invalid {
+  background-position: right 65px center;
+}
+
+.password-input-wrapper input:required:valid {
+  background-position: right 65px center;
+}
+
+/* Focus state improvements */
+input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+input:required:invalid:focus {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.1);
+}
+
+input:required:valid:focus {
+  border-color: #52c41a;
+  box-shadow: 0 0 0 3px rgba(82, 196, 26, 0.1);
+}
+
+/* Ensure labels are visible */
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 600;
+}
+/* ===================================
+   VEHICLE DETAIL PAGE STYLES
+   =================================== */
+.vehicle-detail {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.vehicle-image {
+  width: 100%;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-info {
+  flex: 1;
+}
+
+.vehicle-info h2 {
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.vehicle-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.vehicle-specs {
+  background-color: var(--light-bg);
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-md);
+}
+
+.vehicle-specs p {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+.vehicle-specs p:last-child {
+  margin-bottom: 0;
+}
+
+.vehicle-specs strong {
+  color: var(--primary-color);
+}
+
+.vehicle-description {
+  background-color: var(--light-bg);
+  padding: var(--spacing-md);
+  border-radius: 4px;
+}
+
+.vehicle-description h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.3rem;
+}
+
+.vehicle-description p {
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+/* ===================================
+   VEHICLE DETAIL RESPONSIVE - TABLET & LARGER
+   =================================== */
+@media screen and (min-width: 768px) {
+  .vehicle-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .vehicle-image {
+    order: 1;
+  }
+
+  .vehicle-info {
+    order: 2;
+  }
+
+  .vehicle-info h2 {
+    font-size: 2.2rem;
+  }
+
+  .vehicle-price {
+    font-size: 1.8rem;
   }
 }

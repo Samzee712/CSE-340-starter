@@ -1,0 +1,95 @@
+<div class="register-container">
+  <h1><%= title %></h1>
+  
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+  <form class="register-form" action="/account/register" method="post">
+    
+    <!-- First Name Input -->
+    <div class="form-group">
+      <label for="account_firstname">First Name:</label>
+      <input 
+        type="text" 
+        id="account_firstname" 
+        name="account_firstname" 
+        required 
+        placeholder="Enter your first name"
+        value="<%= locals.account_firstname ? account_firstname : '' %>"
+      >
+    </div>
+
+    <!-- Last Name Input -->
+    <div class="form-group">
+      <label for="account_lastname">Last Name:</label>
+      <input 
+        type="text" 
+        id="account_lastname" 
+        name="account_lastname" 
+        required 
+        placeholder="Enter your last name"
+        value="<%= locals.account_lastname ? account_lastname : '' %>"
+      >
+    </div>
+
+    <!-- Email Input - type="email" for validation -->
+    <div class="form-group">
+      <label for="account_email">Email Address:</label>
+      <input 
+        type="email" 
+        id="account_email" 
+        name="account_email" 
+        required 
+        placeholder="Enter a valid email address"
+        value="<%= locals.account_email ? account_email : '' %>"
+      >
+    </div>
+
+    <!-- Password Input with Pattern Validation -->
+    <div class="form-group">
+      <label for="account_password">Password:</label>
+      
+      <!-- Password Requirements Notice -->
+      <div class="password-info">
+        <p>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</p>
+      </div>
+      
+      <div class="password-input-wrapper">
+        <input 
+          type="password" 
+          id="account_password" 
+          name="account_password" 
+          required 
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+          placeholder="Enter your password"
+          aria-describedby="password-requirements"
+        >
+        <button type="button" class="toggle-password-btn" id="pswdBtn">Show</button>
+      </div>
+      
+      <!-- Detailed Requirements List -->
+      <ul class="password-requirements-list" id="password-requirements">
+        <li>At least 12 characters in length</li>
+        <li>Contain at least 1 capital letter</li>
+        <li>Contain at least 1 number</li>
+        <li>Contain at least 1 special character</li>
+      </ul>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+
+  <div class="register-footer">
+    <p>Already have an account? <a href="/account/login">Login here</a></p>
+  </div>
+</div>
