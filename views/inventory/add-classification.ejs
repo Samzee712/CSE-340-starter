@@ -1,0 +1,40 @@
+<div class="form-container">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <%# Display validation errors %>
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+
+  <form class="add-classification-form" action="/inv/add-classification" method="post">
+    <p class="form-instructions">Classification name cannot contain spaces or special characters.</p>
+    
+    <div class="form-group">
+      <label for="classification_name">Classification Name:</label>
+      <input 
+        type="text" 
+        id="classification_name" 
+        name="classification_name" 
+        required 
+        pattern="^[a-zA-Z0-9]+$"
+        placeholder="Enter classification name (no spaces or special characters)"
+        value="<%= locals.classification_name ? classification_name : '' %>"
+      >
+      <span class="input-note">Example: SUV, Sedan, Truck</span>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Add Classification</button>
+      <a href="/inv" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

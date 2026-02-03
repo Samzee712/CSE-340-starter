@@ -1,0 +1,26 @@
+<div class="management-container">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <div class="management-links">
+    <h2>Inventory Management</h2>
+    
+    <div class="link-grid">
+      <div class="management-card">
+        <h3>Add New Classification</h3>
+        <p>Create a new vehicle classification category</p>
+        <a href="/inv/add-classification" class="btn btn-primary">Add Classification</a>
+      </div>
+
+      <div class="management-card">
+        <h3>Add New Vehicle</h3>
+        <p>Add a new vehicle to the inventory</p>
+        <a href="/inv/add-inventory" class="btn btn-primary">Add Vehicle</a>
+      </div>
+    </div>
+  </div>
+</div>
