@@ -1,0 +1,80 @@
+<div class="form-container">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <%# Display validation errors %>
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+
+  <p><strong>Confirm Deletion - The delete is permanent.</strong></p>
+
+  <form class="delete-inventory-form" action="/inv/delete" method="post">
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inv_make">Make:</label>
+        <input 
+          type="text" 
+          id="inv_make" 
+          name="inv_make" 
+          readonly
+          value="<%= inv_make %>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="inv_model">Model:</label>
+        <input 
+          type="text" 
+          id="inv_model" 
+          name="inv_model" 
+          readonly
+          value="<%= inv_model %>"
+        >
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inv_year">Year:</label>
+        <input 
+          type="text" 
+          id="inv_year" 
+          name="inv_year" 
+          readonly
+          value="<%= inv_year %>"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="inv_price">Price:</label>
+        <input 
+          type="number" 
+          id="inv_price" 
+          name="inv_price" 
+          readonly
+          step="0.01"
+          min="0"
+          value="<%= inv_price %>"
+        >
+      </div>
+    </div>
+
+    <!-- Hidden field to pass inv_id -->
+    <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-danger">Delete Vehicle</button>
+      <a href="/inv" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

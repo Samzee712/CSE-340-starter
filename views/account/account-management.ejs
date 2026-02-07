@@ -1,0 +1,41 @@
+<div class="account-management-container">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <%# Display validation errors %>
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+
+  <div class="account-content">
+    <% if (locals.loggedin) { %>
+      <div class="welcome-section">
+        <h2>Welcome <%= accountData.account_firstname %>!</h2>
+        <p class="account-info">You're logged in as: <strong><%= accountData.account_type %></strong></p>
+      </div>
+
+      <div class="account-actions">
+        <h3>Account Options</h3>
+        <ul class="action-list">
+          <li><a href="/account/update" class="action-link">Update Account Information</a></li>
+          
+          <% if (accountData.account_type == 'Employee' || accountData.account_type == 'Admin') { %>
+            <li><a href="/inv" class="action-link">Inventory Management</a></li>
+          <% } %>
+          
+          <li><a href="/account/logout" class="action-link logout">Logout</a></li>
+        </ul>
+      </div>
+    <% } else { %>
+      <p>You're logged in</p>
+    <% } %>
+  </div>
+</div>

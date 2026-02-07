@@ -17,6 +17,10 @@ router.get("/", utilities.handleErrors(invController.buildManagement))
 // Add classification - GET and POST
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
 
+ //Get inventory by classification (JSON) - for AJAX
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+
 router.post(
   "/add-classification",
   invValidate.classificationRules(),
@@ -31,6 +35,25 @@ router.post(
   invValidate.inventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
+)
+ //Edit inventory - GET (PROTECTED) - NEW!
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory))
+
+// Update inventory - POST
+router.post(
+  "/update",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
+// Delete inventory - GET
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteConfirm))
+
+// Delete inventory - POST
+router.post(
+  "/delete",
+  utilities.handleErrors(invController.deleteInventory)
 )
 
 //Intentional error route for testing
