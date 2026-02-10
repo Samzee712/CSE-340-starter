@@ -156,4 +156,23 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+/* ****************************************
+ *  Check Account Type (Employee or Admin)
+ *  Use on routes that require inventory management access
+ * ************************************ */
+ Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin && res.locals.accountData) {
+    const acctType = res.locals.accountData.account_type
+    if (acctType === 'Employee' || acctType === 'Admin') {
+      next()
+    } else {
+      req.flash('notice', 'You do not have permission to access that resource.')
+      return res.redirect('/account/login')
+    }
+  } else {
+    req.flash('notice', 'Please log in.')
+    return res.redirect('/account/login')
+  }
+ }
+
 module.exports = Util

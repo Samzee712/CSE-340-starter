@@ -1,0 +1,108 @@
+<div class="account-update-container">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+
+  <%# Display flash messages %>
+  <%- messages() %>
+
+  <%# Display validation errors %>
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+
+  <div class="update-forms-container">
+    
+    <!-- Account Update Form -->
+    <div class="form-section">
+      <h2>Update Account Information</h2>
+      <form id="accountUpdateForm" action="/account/update" method="post">
+        
+        <div class="form-group">
+          <label for="account_firstname">First Name:</label>
+          <input 
+            type="text" 
+            id="account_firstname" 
+            name="account_firstname" 
+            required 
+            placeholder="Enter your first name"
+            value="<%= locals.account_firstname ? account_firstname : accountData.account_firstname %>"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="account_lastname">Last Name:</label>
+          <input 
+            type="text" 
+            id="account_lastname" 
+            name="account_lastname" 
+            required 
+            placeholder="Enter your last name"
+            value="<%= locals.account_lastname ? account_lastname : accountData.account_lastname %>"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="account_email">Email Address:</label>
+          <input 
+            type="email" 
+            id="account_email" 
+            name="account_email" 
+            required 
+            placeholder="Enter your email address"
+            value="<%= locals.account_email ? account_email : accountData.account_email %>"
+          >
+        </div>
+
+        <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Update Information</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Password Change Form -->
+    <div class="form-section">
+      <h2>Change Password</h2>
+      <p class="password-info">
+        Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter, and 1 special character.
+      </p>
+      
+      <form id="passwordChangeForm" action="/account/change-password" method="post">
+        
+        <div class="form-group">
+          <label for="account_password">New Password:</label>
+          <div class="password-input-wrapper">
+            <input 
+              type="password" 
+              id="account_password" 
+              name="account_password" 
+              required 
+              pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+              placeholder="Enter new password"
+            >
+            <button type="button" class="toggle-password-btn" id="pswdBtn">Show</button>
+          </div>
+        </div>
+
+        <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Change Password</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="back-link">
+    <a href="/account/">← Back to Account Management</a>
+  </div>
+</div>
+
+<script src="/js/account.js"></script>
