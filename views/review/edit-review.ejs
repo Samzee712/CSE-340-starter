@@ -1,0 +1,70 @@
+<div class="review-form-container">
+  <h1><%= title %></h1>
+  
+  <%- messages() %>
+  
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <%  }) %>
+    </ul>
+  <% } %>
+
+  <div class="vehicle-info">
+    <h2>Editing review for: <%= vehicleName %></h2>
+    <p class="info-notice">Note: Your review will need re-approval after editing.</p>
+  </div>
+
+  <form action="/review/update" method="post">
+    
+    <div class="form-group">
+      <label for="review_rating">Rating: <span class="required">*</span></label>
+      <div class="star-rating">
+        <input type="radio" id="star5" name="review_rating" value="5" <%= review_rating == 5 ? 'checked' : '' %> required>
+        <label for="star5">★</label>
+        <input type="radio" id="star4" name="review_rating" value="4" <%= review_rating == 4 ? 'checked' : '' %>>
+        <label for="star4">★</label>
+        <input type="radio" id="star3" name="review_rating" value="3" <%= review_rating == 3 ? 'checked' : '' %>>
+        <label for="star3">★</label>
+        <input type="radio" id="star2" name="review_rating" value="2" <%= review_rating == 2 ? 'checked' : '' %>>
+        <label for="star2">★</label>
+        <input type="radio" id="star1" name="review_rating" value="1" <%= review_rating == 1 ? 'checked' : '' %>>
+        <label for="star1">★</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="review_text">Your Review: <span class="required">*</span></label>
+      <textarea 
+        id="review_text" 
+        name="review_text" 
+        rows="6" 
+        required 
+        minlength="10"
+        maxlength="1000"
+      ><%= review_text %></textarea>
+      <p class="help-text character-count">
+        <span id="charCount">0</span>/1000 characters
+      </p>
+    </div>
+
+    <input type="hidden" name="review_id" value="<%= review_id %>">
+    <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update Review</button>
+      <a href="/review/my-reviews" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+const textarea = document.getElementById('review_text');
+const charCount = document.getElementById('charCount');
+function updateCount() {
+  charCount.textContent = textarea.value.length;
+}
+textarea.addEventListener('input', updateCount);
+updateCount();
+</script>

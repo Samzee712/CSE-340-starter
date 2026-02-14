@@ -1,3 +1,10 @@
 <nav>
-<%- nav %>
+	<%- nav %>
+	<% if (typeof loggedin !== 'undefined' && loggedin && typeof accountData !== 'undefined' && (accountData.account_type === 'Employee' || accountData.account_type === 'Admin')) { %>
+		<div class="nav-admin-reviews">
+			<a href="/review/admin" class="btn btn-primary">Manage Reviews
+				<span class="badge"><%= (typeof pendingReviewCount !== 'undefined' ? pendingReviewCount : 0) %></span>
+			</a>
+		</div>
+	<% } %>
 </nav>

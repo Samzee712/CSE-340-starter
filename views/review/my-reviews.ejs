@@ -1,0 +1,60 @@
+<div class="my-reviews-container">
+  <h1><%= title %></h1>
+  
+  <%- messages() %>
+  
+  <% if (reviews && reviews.length > 0) { %>
+    <div class="reviews-list">
+      <% reviews.forEach(review => { %>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="vehicle-info">
+              <h3>
+                <a href="/inv/detail/<%= review.inv_id %>">
+                  <%= review.inv_year %> <%= review.inv_make %> <%= review.inv_model %>
+                </a>
+              </h3>
+              <div class="review-meta">
+                <div class="stars">
+                  <% for(let i = 1; i <= 5; i++) { %>
+                    <span class="star <%= i <= review.review_rating ? 'filled' : '' %>">★</span>
+                  <% } %>
+                </div>
+                <span class="review-date">
+                  <%= new Date(review.review_date).toLocaleDateString() %>
+                </span>
+              </div>
+            </div>
+            <div class="review-status">
+              <% if (review.review_approved) { %>
+                <span class="status-badge approved">Approved</span>
+              <% } else { %>
+                <span class="status-badge pending">Pending</span>
+              <% } %>
+            </div>
+          </div>
+          
+          <div class="review-content">
+            <p><%= review.review_text %></p>
+          </div>
+          
+          <div class="review-actions">
+            <a href="/review/edit/<%= review.review_id %>" class="btn btn-small btn-primary">Edit</a>
+            <a href="/review/delete/<%= review.review_id %>" 
+               class="btn btn-small btn-danger" 
+               onclick="return confirm('Delete this review?')">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="no-reviews">
+      <p>You haven't written any reviews yet.</p>
+      <p><a href="/inv">Browse our inventory</a> to get started!</p>
+    </div>
+  <% } %>
+
+  <div class="back-link">
+    <a href="/account/">← Back to Account</a>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 const invModel = require("../models/inventory-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
+const reviewModel = require("../models/review-model")
 require("dotenv").config()
 /* ************************
  * Constructs the nav HTML unordered list
@@ -137,7 +138,22 @@ Util.checkJWTToken = (req, res, next) => {
     }
     res.locals.accountData = accountData
     res.locals.loggedin = 1
-    next()
+    // If admin/employee, fetch pending reviews count for badge display
+    if (accountData && (accountData.account_type === 'Employee' || accountData.account_type === 'Admin')) {
+     reviewModel.getPendingReviewsCount()
+      .then(count => {
+        res.locals.pendingReviewCount = count || 0
+        next()
+      })
+      .catch(err => {
+        console.error('Error fetching pending review count:', err)
+        res.locals.pendingReviewCount = 0
+        next()
+      })
+    } else {
+      res.locals.pendingReviewCount = 0
+      next()
+    }
    })
  } else {
   next()

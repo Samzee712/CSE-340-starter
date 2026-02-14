@@ -1,0 +1,59 @@
+<div class="reviews-section">
+  <div class="reviews-header">
+    <h2>Customer Reviews</h2>
+    
+    <% if (typeof avgRating !== 'undefined' && avgRating.review_count > 0) { %>
+      <div class="rating-summary">
+        <div class="average-rating">
+          <span class="rating-number"><%= avgRating.avg_rating %></span>
+          <div class="stars-large">
+            <% const rating = parseFloat(avgRating.avg_rating); %>
+            <% for(let i = 1; i <= 5; i++) { %>
+              <span class="star <%= i <= rating ? 'filled' : '' %>">★</span>
+            <% } %>
+          </div>
+          <span class="review-count">Based on <%= avgRating.review_count %> review<%= avgRating.review_count !== 1 ? 's' : '' %></span>
+        </div>
+      </div>
+    <% } %>
+
+    <% if (locals.loggedin) { %>
+      <div class="add-review-button">
+        <a href="/review/add/<%= inv_id %>" class="btn btn-primary">Write a Review</a>
+      </div>
+    <% } else { %>
+      <p class="login-prompt">
+        <a href="/account/login">Log in</a> to write a review
+      </p>
+    <% } %>
+  </div>
+
+  <% if (typeof reviews !== 'undefined' && reviews.length > 0) { %>
+    <div class="reviews-list">
+      <% reviews.forEach(review => { %>
+        <div class="review-item">
+          <div class="review-header-small">
+            <div class="reviewer-name">
+              <%= review.account_firstname %> <%= review.account_lastname.charAt(0) %>.
+            </div>
+            <div class="stars-small">
+              <% for(let i = 1; i <= 5; i++) { %>
+                <span class="star <%= i <= review.review_rating ? 'filled' : '' %>">★</span>
+              <% } %>
+            </div>
+            <div class="review-date-small">
+              <%= new Date(review.review_date).toLocaleDateString() %>
+            </div>
+          </div>
+          <div class="review-text">
+            <p><%= review.review_text %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="no-reviews-yet">
+      <p>No reviews yet. Be the first to review this vehicle!</p>
+    </div>
+  <% } %>
+</div>
